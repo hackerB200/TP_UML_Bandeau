@@ -1,0 +1,51 @@
+@startuml
+
+class Effet {
+  # bandeau: Bandeau
+  # message: String
+  + getMessage(): String
+  + jouerEffet(): void
+  + setBandeau(Bandeau): void
+  + getBandeau(): Bandeau
+  + setMessage(String): void
+}
+class EffetApparition { 
+  # direction: String
+  + faireApparaitre(): void
+}
+class EffetFondRandom {
+  + changeCouleurFond(): void
+}
+class EffetCouleurRandom {
+  + changeCouleurTexte(): void
+}
+class EffetTourEntier { 
+  + faireTourner(): void
+}
+class ExempleDUtilisation {
+  + main(String[]): void
+  + exemple(): void
+}
+class Scenario {
+  - effets: LinkedHashMap<Effet, Integer>
+  + ajouterEffet(Effet, int): void
+  + jouerScenario(): void
+}
+class Bandeau {
+  + message: String
+  + rotation: double
+  + background: Color
+  + foreground: Color
+  + font: Font
+  + sleep(millis: int): void
+}
+
+EffetApparition --^ Effet               
+EffetFondRandom --^ Effet
+EffetCouleurRandom --^ Effet              
+EffetTourEntier --^ Effet
+Scenario o-- "*" Effet
+Effet o-- "*" Bandeau
+ExempleDUtilisation ..> Scenario
+ExempleDUtilisation ..> EffetApparition            
+@enduml
