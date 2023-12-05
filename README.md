@@ -2,4 +2,4 @@
 
 Eva Tubia
 
-image::tpUML.svg[]
+![UML](tpUML.svg)
